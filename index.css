@@ -1,0 +1,140 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+html,
+body {
+  overflow: hidden;
+}
+:root {
+  --jump-height: 400px;
+  --rope-height: 300px;
+  --animation-timer: 3s;
+  --height-reduction: 5px;
+}
+#canvas {
+  background-position-x: center;
+  background-position-y: center;
+  background-size: auto;
+  height: 100vh;
+  width: 100vw;
+}
+.container {
+  height: 100vh;
+  width: 100vw;
+
+  /* overflow: hidden; */
+  /* overflow-y: scroll; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  /* justify-content: center; */
+}
+.slider {
+  background: url("./assets/images/universe_1920.jpg") repeat-x center
+    center/cover;
+  /* background: url("./assets/images/universe_1920.jpg") repeat-x center
+    center/contain; */
+  height: 100%;
+  width: 13570px;
+  animation: slide 30s linear infinite;
+}
+.planet {
+  background: url("./assets/images/earth.png") no-repeat center center/cover;
+  /* border-radius: 50%; */
+  height: 200px;
+  width: 15%;
+  position: absolute;
+  bottom: -28px;
+  clip-path: circle(50% at 50% 72%);
+
+  overflow: hidden;
+}
+
+@media only screen and (max-width: 768px) {
+  .planet {
+    background: url("./assets/images/earth.png") no-repeat center center/cover;
+    /* border-radius: 50%; */
+    height: 200px;
+    width: 100%;
+    position: absolute;
+    bottom: -28px;
+
+    left: 0px;
+
+    clip-path: circle(50% at 50% 72%);
+
+    overflow: hidden;
+  }
+}
+.astro {
+  background: url("./assets/images/astronaut.png") no-repeat center center/cover;
+  height: 100px;
+  width: 100px;
+  z-index: 10;
+  position: absolute;
+  bottom: 140px;
+  align-self: center;
+  transition: bottom var(--animation-timer) ease-in-out;
+}
+
+.astro-transition {
+  bottom: var(--jump-height);
+}
+.rope {
+  width: 1px;
+  border-left: 2px dotted rgb(233, 227, 227);
+  position: absolute;
+  bottom: 145px;
+  height: 2px;
+  align-self: center;
+  transition: height var(--animation-timer) ease-in-out;
+}
+.rope-transition {
+  height: var(--rope-height);
+}
+.control {
+  position: absolute;
+  left: 0;
+  z-index: 10;
+  display: flex;
+  height: 30px;
+}
+.control * {
+  flex: 1;
+}
+.toggleButton {
+  color: #fff;
+
+  z-index: 11;
+  text-align: center;
+  position: absolute;
+  bottom: 50px;
+}
+#selectPlanet {
+  background: black;
+  color: #fff;
+  text-align: center;
+  border: none;
+}
+.tooltipcontainer {
+  padding: 10px;
+  clip-path: circle(43% at 50% 50%);
+  visibility: hidden;
+  background: #fff;
+  position: absolute;
+  left: 100px;
+}
+.ifont {
+  color: black;
+}
+@keyframes slide {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-1357px, 0, 0);
+  }
+}
