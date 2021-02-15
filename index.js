@@ -30,8 +30,12 @@ document.getElementsByClassName("toggleButton")[0].onclick = function () {
 };
 
 document.getElementById("selectPlanet").onchange = function (e) {
-  console.log(this.value);
   var planet = document.getElementsByClassName("planet")[0];
+  var planetAudio = document.getElementById("planetAudio");
+  var srcAttrib = "assets/audio/" + this.value + ".m4a";
+  console.log(srcAttrib);
+  planetAudio.setAttribute("src", srcAttrib);
+  planetAudio.play();
   var url =
     "url('./assets/images/" +
     this.value +
